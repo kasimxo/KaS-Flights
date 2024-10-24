@@ -1,20 +1,31 @@
-import fs from 'node:fs'
+
 
 
 //Archivo que reune todas las llamadas a la Api de OpenSky
 
-export function recuperarVuelos() {
+const root = `https://opensky-network.org/api`
+
+export async function recuperarVuelos() {
     console.log('Llamada a recuperar vuelos de Open Sky')
 
-    var data = fs.readFileSync('./vuelos.txt', { encoding: 'utf8' })
+    /* 
+        TO DO: guardar la cabezera del limit rate para evitar un 429
+        y/o detectar error 429
+    */
 
-    var correctJson = JSON.parse(data)
-    return correctJson.states
+    var url = root + `/states/all`
+
+    var data = await fetch(url)
+
+    console.log(data)
+
+    var correctJson = await data.json()
+    return correctJson
 }
 
 export function vueloAleatorio(vuelos) {
-
-    var max = vuelos.length
+    console.log('Llamada a recuperar un vuelo aleatorio')
+    var max = vuelos.states.length
     var randomIndex = Math.floor(Math.random() * max)
-    return vuelos[randomIndex]
+    return vuelos.states[randomIndex]
 }
