@@ -1,6 +1,3 @@
-
-
-
 //Archivo que gestiona todas las llamadas al servidor
 
 export async function vueloAleatorioGet() {
@@ -8,5 +5,6 @@ export async function vueloAleatorioGet() {
 
     var data = await fetch(url)
     var respuesta = data.json()
+    console.log(respuesta)
     return respuesta
 }

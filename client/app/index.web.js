@@ -21,6 +21,7 @@ export default function index() {
             <Text>Latitud: {vuelo !== undefined ? vuelo[5] : ''}</Text>
             <Text>Longitud: {vuelo !== undefined ? vuelo[6] : ''}</Text>
             <Text>Altitud: {vuelo !== undefined ? vuelo[13] : ''}</Text>
+
             <Pressable
                 style={styles.boton}
                 onPress={recuperarVuelo}
