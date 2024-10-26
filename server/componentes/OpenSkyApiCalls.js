@@ -13,14 +13,19 @@ export async function recuperarVuelos() {
     */
 
     var url = root + `/states/all`
-
     var data = await fetch(url)
     var correctJson = await data.json()
+    if (correctJson.states === null) {
+        throw new Error(503)
+    }
     return correctJson
 }
 
 export function vueloAleatorio(vuelos) {
-    console.log('Llamada a recuperar un vuelo aleatorio')
+    console.log('Llamada a recuperar un vuelo aleatorio, vuelos: ')
+    if (vuelos.states === null) {
+        throw new Error(503)
+    }
     var max = vuelos.states.length
     var randomIndex = Math.floor(Math.random() * max)
     return vuelos.states[randomIndex]

@@ -15,6 +15,16 @@ let vuelo = undefined
 let intervalo = undefined
 
 app.use(cors())
+app.use((req, res, next) => {
+    console.log('Time:', Date.now())
+    //console.log(req)
+    if (vuelos.states === null) {
+        res.sendStatus(503)
+        res.end()
+        return
+    }
+    next()
+})
 
 app.get('/', (req, res) => {
     if (vuelo !== undefined) {
@@ -22,11 +32,16 @@ app.get('/', (req, res) => {
         vuelo = undefined
         let vueloTemp = vueloAleatorio(vuelos)
         recuperarPath(vueloTemp).then((vueloT) => { vuelo = vueloT })
+            .catch((error) => { console.log('Hemos detectado un error 1') })
     } else {
         let vueloTemp = vueloAleatorio(vuelos)
         recuperarPath(vueloTemp).then((vueloT) => { res.send(vueloT) })
+            .catch((error) => { console.log('Hemos detectado un error 2') })
         vueloTemp = vueloAleatorio(vuelos)
         recuperarPath(vueloTemp).then((vueloT) => { vuelo = vueloT })
+            .catch((error) => { console.log('Hemos detectado un error 3') })
+
+
     }
 })
 
@@ -47,13 +62,18 @@ app.listen(port, () => {
             let vueloTemp = vueloAleatorio(vuelos)
             intervalo = setInterval(recuperarVuelos, 600000)
             recuperarPath(vueloTemp).then((vueloT) => { vuelo = vueloT }) //Cargamos automáticamente un vuelo
-        })
+        }).catch((error) => { console.log('Hemos detectado un error con la api') })
     } else {
         console.log('Cargada la información del archivo')
         let delay = (vuelos.time + 600) * 1000 - Date.now()
         console.log(`Se lanzará la recarga automática en: ${delay / 1000} s`)
         setTimeout(() => { intervalo = setInterval(recuperarVuelos, 600000) },)
-        let vueloTemp = vueloAleatorio(vuelos)
-        recuperarPath(vueloTemp).then((vueloT) => { vuelo = vueloT }) //Cargamos automáticamente un vuelo
+        if (vuelos.states !== null) {
+            let vueloTemp = vueloAleatorio(vuelos)
+            recuperarPath(vueloTemp).then((vueloT) => { vuelo = vueloT }) //Cargamos automáticamente un vuelo
+        } else {
+            console.error('Fallo con la API de OpenSky, vuelos === null')
+        }
+
     }
 })
