@@ -36,6 +36,6 @@ export async function recuperarPath(vuelo) {
 
     var data = await fetch(url)
     var correctJson = await data.json()
-    vuelo[vuelo.length] = correctJson.path
+    vuelo[vuelo.length + 1] = correctJson.path
     return vuelo
 }
