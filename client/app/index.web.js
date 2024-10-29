@@ -1,14 +1,14 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native'
 import { vueloAleatorioGet } from '../api/api.js'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import Mapa from '../componentes/Mapa.js'
+import { VueloContexto } from './_layout.web.js'
 
 export default function index() {
 
-    const [vuelo, setVuelo] = useState()
+    const { vuelo, setVuelo } = useContext(VueloContexto)
 
     useEffect(() => { recuperarVuelo() }, [])
-
 
     async function recuperarVuelo() {
 
@@ -39,17 +39,12 @@ export default function index() {
             path: vueloRand[18]
         })
         console.log('Hemos seteado el vuelo: ', vueloRand)
-
     }
 
     return (
         <View style={styles.container}>
-            <Text>Identificador: {vuelo !== undefined ? vuelo.id : ''}</Text>
-            <Text>País de origen: {vuelo !== undefined ? vuelo.origen : ''}</Text>
-            <Text>Latitud: {vuelo !== undefined ? vuelo.latitude : ''}</Text>
-            <Text>Longitud: {vuelo !== undefined ? vuelo.longitude : ''}</Text>
-            <Text>Altitud: {vuelo !== undefined ? vuelo.baro_altitude : ''}</Text>
-            <Mapa vuelo={vuelo} />
+
+            <Mapa />
             <Pressable
                 style={styles.boton}
                 onPress={recuperarVuelo}
