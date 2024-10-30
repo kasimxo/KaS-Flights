@@ -1,9 +1,5 @@
 {
     "version": 2,
-    "routes": [{"src": "./(.*)", "dest": "/"}],
-    "functions": {
-        "index.js": {
-            "includeFiles": "vuelos.json"
-        }
-    }
+    "builds": [{ "src": "./index.js", "use": "@vercel/node"}],
+    "routes": [{"src": "./(.*)", "dest": "/"}]
 }
