@@ -18,7 +18,7 @@ app.use(cors())
 app.use((req, res, next) => {
     console.log('Time:', Date.now())
     //console.log(req)
-    if (vuelos.states !== undefined && vuelos.states === null) {
+    if (vuelos !== undefined && vuelos.states === null) {
         res.sendStatus(503)
         res.end()
         return
