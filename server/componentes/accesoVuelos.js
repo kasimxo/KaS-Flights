@@ -10,7 +10,7 @@ export function guardarVuelos(vuelos) {
 
 // leemos la información de los vuelos del archivo.json
 export function leerVuelos() {
-    let vuelosPath = path.join(process.cwd(), '..', 'vuelos.json');
+    let vuelosPath = path.join(process.cwd(), 'vuelos.json');
     console.log(vuelosPath)
     let vuelosRaw = fs.readFileSync(vuelosPath, { encoding: 'utf8' })
     let vuelos = JSON.parse(vuelosRaw)
