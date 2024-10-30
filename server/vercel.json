@@ -2,7 +2,7 @@
     "version": 2,
     "routes": [{"src": "./(.*)", "dest": "/"}],
     "functions": {
-        "server/index.js": {
+        "index.js": {
             "includeFiles": "vuelos.json"
         }
     }
