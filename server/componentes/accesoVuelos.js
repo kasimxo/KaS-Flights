@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'path'
+import * as vuelosRaw from './vuelos.json'
 
 
 // guardamos la información de los vuelos en un archivo.json
