@@ -35,6 +35,9 @@ app.get('/', (req, res) => {
             let vueloTemp = vueloAleatorio(vuelos)
             recuperarPath(vueloTemp).then((vueloT) => { res.send(vueloT) })
         })
+    } else {
+        let vueloTemp = vueloAleatorio(vuelos)
+        recuperarPath(vueloTemp).then((vueloT) => { res.send(vueloT) })
     }
 })
 
