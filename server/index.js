@@ -27,6 +27,9 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
+    if (vuelos === undefined) {
+        res.send('Lista de vuelos no disponible')
+    }
     if (vuelo !== undefined) {
         res.send(vuelo)
         vuelo = undefined
@@ -40,8 +43,6 @@ app.get('/', (req, res) => {
         vueloTemp = vueloAleatorio(vuelos)
         recuperarPath(vueloTemp).then((vueloT) => { vuelo = vueloT })
             .catch((error) => { console.log('Hemos detectado un error 3') })
-
-
     }
 })
 
