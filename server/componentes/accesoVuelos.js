@@ -10,5 +10,6 @@ export function guardarVuelos(vuelos) {
 export function leerVuelos() {
     let vuelosRaw = fs.readFileSync('./vuelos.json', { encoding: 'utf8' })
     let vuelos = JSON.parse(vuelosRaw)
+    console.log('Recuperados vuelos del archivo: ', vuelos.states.length)
     return vuelos
 }
