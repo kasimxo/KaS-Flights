@@ -22,7 +22,7 @@ export async function recuperarVuelos() {
 }
 
 export function vueloAleatorio(vuelos) {
-    console.log('Llamada a recuperar un vuelo aleatorio, vuelos: ')
+    console.log('Llamada a recuperar un vuelo aleatorio, vuelos: ', vuelos)
     if (vuelos.states === null) {
         throw new Error(503)
     }
