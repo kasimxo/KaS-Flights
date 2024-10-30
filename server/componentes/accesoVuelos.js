@@ -11,7 +11,7 @@ export function guardarVuelos(vuelos) {
 // leemos la información de los vuelos del archivo.json
 export function leerVuelos() {
     let vuelosPath = path.join(process.cwd(), 'vuelos.json');
-    console.log(fs.readdirSync(vuelosPath))
+    console.log(fs.readdirSync(process.cwd()))
     let vuelosRaw = fs.readFileSync(vuelosPath, { encoding: 'utf8' })
     let vuelos = JSON.parse(vuelosRaw)
     console.log('Recuperados vuelos del archivo: ', vuelos.states.length)
