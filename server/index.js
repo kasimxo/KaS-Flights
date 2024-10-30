@@ -27,6 +27,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
+    leerVuelos()
     if (vuelos === undefined) {
         recuperarVuelos().then((vuelosRaw) => {
             vuelos = vuelosRaw
