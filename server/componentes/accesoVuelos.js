@@ -16,7 +16,7 @@ export function leerVuelos() {
     console.log(fs.readdirSync(process.cwd() + '/server'))
     let vuelosRaw = fs.readFileSync(vuelosPath, { encoding: 'utf8' })
     */
-    console.log('Vamos a leer el archivo')
+    console.log('Vamos a leer el archivo:', json)
     let vuelos = JSON.parse(json)
     console.log('Recuperados vuelos del archivo: ', vuelos.states.length)
     return vuelos
