@@ -5,11 +5,13 @@ import { createContext, useState } from 'react'
 export const VueloContexto = createContext()
 export const VueloProvider = ({ children }) => {
     const [vuelo, setVuelo] = useState()
+    const [vuelos, setVuelos] = useState()
     return (
         < VueloContexto.Provider
             value={
                 {
-                    vuelo, setVuelo
+                    vuelo, setVuelo,
+                    vuelos, setVuelos
                 }
             } >
             {children}

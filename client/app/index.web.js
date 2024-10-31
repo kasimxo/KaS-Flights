@@ -1,18 +1,33 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native'
-import { vueloAleatorioGet } from '../api/api.js'
 import { useEffect, useState, useContext } from 'react'
 import Mapa from '../componentes/Mapa.js'
 import { VueloContexto } from './_layout.web.js'
+import { recuperarPath, recuperarVuelos, vueloAleatorio } from '../api/OpenSkyApiCalls.js'
 
 export default function index() {
 
-    const { vuelo, setVuelo } = useContext(VueloContexto)
+    const {
+        vuelo, setVuelo,
+        vuelos, setVuelos
+    } = useContext(VueloContexto)
 
-    useEffect(() => { recuperarVuelo() }, [])
+    useEffect(() => {
+        recuperarVuelo()
+    }, [])
 
     async function recuperarVuelo() {
+        let data = vuelos !== undefined ? vuelos : null
+        if (vuelos === undefined || vuelos.time + 600 < Date.now() / 1000) {
+            console.log('La información de vuelos está desactualizada')
+            let vuelosJSON = await recuperarVuelos()
+            data = vuelosJSON
+            setVuelos(vuelosJSON)
+        } else {
+            console.log('Información de vuelos válida')
+        }
 
-        var vueloRand = await vueloAleatorioGet()
+        let vueloRand = await vueloAleatorio(data)
+        vueloRand = await recuperarPath(vueloRand)
         if (vueloRand === undefined) {
             console.log('No se ha recuperado un vuelo')
             return
@@ -43,7 +58,6 @@ export default function index() {
 
     return (
         <View style={styles.container}>
-
             <Mapa />
             <Pressable
                 style={styles.boton}
@@ -58,7 +72,11 @@ export default function index() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 100,
+        padding: 25,
+        gap: 25,
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center'
     },
     textoBoton: {
         fontSize: 25,

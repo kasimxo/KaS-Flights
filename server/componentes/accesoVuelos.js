@@ -2,7 +2,6 @@ import fs from 'node:fs'
 import path from 'path'
 import json from './../vuelos.json' with {type: "json"}
 
-
 // guardamos la información de los vuelos en un archivo.json
 export function guardarVuelos(vuelos) {
     let vuelosString = JSON.stringify(vuelos)
