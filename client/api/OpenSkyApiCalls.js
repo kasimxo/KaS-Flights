@@ -22,9 +22,9 @@ export async function recuperarVuelos() {
 }
 
 export function vueloAleatorio(vuelos) {
-    console.log('Llamada a recuperar un vuelo aleatorio, vuelos: ', vuelos)
+    console.log('Llamada a recuperar un vuelo aleatorio, vuelos: ', vuelos.length)
     if (vuelos.states === null) {
-        throw new Error(503)
+        throw new Error()
     }
     var max = vuelos.states.length
     var randomIndex = Math.floor(Math.random() * max)

@@ -1,6 +1,6 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native'
 import { useEffect, useState, useContext } from 'react'
-import Mapa from '../componentes/Mapa.js'
+import MapaWeb from '../componentes/MapaWeb.js'
 import { VueloContexto } from './_layout.web.js'
 import { recuperarPath, recuperarVuelos, vueloAleatorio } from '../api/OpenSkyApiCalls.js'
 
@@ -58,7 +58,7 @@ export default function index() {
 
     return (
         <View style={styles.container}>
-            <Mapa />
+            <MapaWeb />
             <Pressable
                 style={styles.boton}
                 onPress={recuperarVuelo}

@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "kas-flight-client",
+    "scheme": "kas-flight-client",
     "slug": "kas-flight-client",
     "version": "1.0.0",
     "orientation": "portrait",

@@ -9,15 +9,13 @@ import L from 'leaflet'
 import marker from './../assets/favicon.png';
 
 
-export default function Mapa() {
+export default function MapaWeb() {
     const { vuelo, setVuelo } = useContext(VueloContexto)
 
     const [track, setTrack] = useState([])
 
 
     useEffect(() => {
-        //if (vuelo !== undefined) { updateTrack(vuelo.path) }
-
         console.log('useEffect')
     }, [vuelo])
 
