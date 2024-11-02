@@ -58,13 +58,21 @@ export default function index() {
 
     return (
         <View style={styles.container}>
+            <Text style={vuelo === undefined ? { display: 'none' } : styles.textoDetalle}>
+                Identificador: {vuelo !== undefined ? vuelo.id : ''}{'\n'}
+                {/*País de origen: {vuelo !== undefined ? vuelo.origen : ''}<br />*/}
+                Latitud: {vuelo !== undefined ? vuelo.latitude : ''}{'\n'}
+                Longitud: {vuelo !== undefined ? vuelo.longitude : ''}{'\n'}
+                Altitud: {vuelo !== undefined ? vuelo.baro_altitude : ''}
+            </Text>
             <MapaAndroid />
             <Pressable
                 style={styles.boton}
                 onPress={recuperarVuelo}
             >
-                <Text style={{ color: 'white' }}>Nuevo vuelo aleatorio</Text>
+                <Text style={styles.textoBoton}>Nuevo vuelo aleatorio</Text>
             </Pressable>
+
         </View>
     )
 }
@@ -73,25 +81,40 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        padding: 25,
-
         justifyContent: 'center',
         alignContent: 'center',
         alignItems: 'center'
     },
     textoBoton: {
-
-        fontSize: 50,
+        fontSize: 15,
         fontWeight: 'bold',
-        color: 'white',
-        backgroundColor: 'white',
+        color: '#343036',
     },
     boton: {
-        padding: 50,
-        alignContent: 'center',
+        padding: 12,
+        position: 'absolute',
+        bottom: 25,
+        zIndex: 15,
         justifyContent: 'center',
+        alignContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#000000',
-        borderRadius: 25
+        backgroundColor: '#cfa4de',
+        width: 'auto',
+        borderRadius: 10,
+        elevation: 5
+    },
+    textoDetalle: {
+        padding: 12,
+        position: 'absolute',
+        top: 25,
+        left: 15,
+        zIndex: 15,
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#cfa4de',
+        width: 'auto',
+        borderRadius: 10,
+        elevation: 15
     }
 })
