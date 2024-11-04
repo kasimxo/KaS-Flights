@@ -1,9 +1,8 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native'
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useContext } from 'react'
+import { VueloContexto } from './_layout.android.js'
 import Mapa from '../componentes/Mapa'
-import { VueloContexto } from './_layout.web.js'
 import { recuperarPath, recuperarVuelos, vueloAleatorio } from '../api/OpenSkyApiCalls.js'
-
 
 export default function index() {
 
@@ -11,8 +10,6 @@ export default function index() {
         vuelo, setVuelo,
         vuelos, setVuelos
     } = useContext(VueloContexto)
-
-    const [hovered, setHovered] = useState(false)
 
     useEffect(() => {
         recuperarVuelo()
@@ -61,15 +58,21 @@ export default function index() {
 
     return (
         <View style={styles.container}>
+            <Text style={vuelo === undefined ? { display: 'none' } : styles.textoDetalle}>
+                Identificador: {vuelo !== undefined ? vuelo.id : ''}{'\n'}
+                {/*País de origen: {vuelo !== undefined ? vuelo.origen : ''}<br />*/}
+                Latitud: {vuelo !== undefined ? vuelo.latitude : ''}{'\n'}
+                Longitud: {vuelo !== undefined ? vuelo.longitude : ''}{'\n'}
+                Altitud: {vuelo !== undefined ? vuelo.baro_altitude : ''}
+            </Text>
+            <Mapa />
             <Pressable
-                style={[hovered ? styles.botonHover : styles.boton]}
+                style={styles.boton}
                 onPress={recuperarVuelo}
-                onHoverIn={() => { setHovered(true) }}
-                onHoverOut={() => { setHovered(false) }}
             >
                 <Text style={styles.textoBoton}>Nuevo vuelo aleatorio</Text>
             </Pressable>
-            <Mapa />
+
         </View>
     )
 }
@@ -77,42 +80,41 @@ export default function index() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: 'column',
         justifyContent: 'center',
         alignContent: 'center',
         alignItems: 'center'
     },
     textoBoton: {
-        fontSize: 25,
+        fontSize: 15,
         fontWeight: 'bold',
-    },
-    botonHover: {
-        zIndex: 999,
-        position: 'absolute',
-        shadowColor: 'black',
-        shadowOpacity: 0.5,
-        shadowOffset: { width: 0, height: 0 },
-        shadowRadius: 10,
-        bottom: 100,
-        padding: 25,
-        alignContent: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#9c72ab',
-        borderRadius: 50
+        color: '#343036',
     },
     boton: {
-        zIndex: 999,
+        padding: 12,
         position: 'absolute',
-        shadowColor: 'black',
-        shadowOpacity: 0.5,
-        shadowOffset: { width: 0, height: 0 },
-        shadowRadius: 10,
-        bottom: 100,
-        padding: 25,
-        alignContent: 'center',
+        bottom: 25,
+        zIndex: 15,
         justifyContent: 'center',
+        alignContent: 'center',
         alignItems: 'center',
         backgroundColor: '#cfa4de',
-        borderRadius: 50
+        width: 'auto',
+        borderRadius: 10,
+        elevation: 5
+    },
+    textoDetalle: {
+        padding: 12,
+        position: 'absolute',
+        top: 25,
+        left: 15,
+        zIndex: 15,
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#cfa4de',
+        width: 'auto',
+        borderRadius: 10,
+        elevation: 15
     }
 })

@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.kasimxo.kasflightclient"
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -27,6 +28,11 @@
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "f012c748-f3be-4d1c-872c-edcd68cdfe90"
+      }
+    }
   }
 }

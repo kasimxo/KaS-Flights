@@ -9,7 +9,7 @@ import L from 'leaflet'
 import marker from './../assets/favicon.png';
 
 
-export default function MapaWeb() {
+export default function Mapa() {
     const { vuelo, setVuelo } = useContext(VueloContexto)
 
     const [track, setTrack] = useState([])
@@ -21,10 +21,9 @@ export default function MapaWeb() {
 
     const myIcon = new L.Icon({
         iconUrl: './../assets/modo-avion.png',
-        iconSize: [50, 50], // size of the icon
-        iconAnchor: [25, 60], // point of the icon which will correspond to marker's location
-        shadowAnchor: [4, 62],  // the same for the shadow
-        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+        iconSize: [40, 40], // size of the icon
+        iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -30] // point from which the popup should open relative to the iconAnchor
     });
 
     return (
@@ -54,9 +53,8 @@ export default function MapaWeb() {
 
 const estiloMapa = StyleSheet.create({
     mapa: {
-        width: '80vw',
-        height: '80vh',
-        borderRadius: 25,
+        width: '100vw',
+        height: '100vh',
     }
 })
 

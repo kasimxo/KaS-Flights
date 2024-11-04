@@ -1,12 +1,12 @@
 import MapView, { Marker, Polyline } from 'react-native-maps'
 import { useContext, useEffect, useState } from 'react'
-import { VueloContexto } from '../app/_layout'
+import { VueloContexto } from '../app/_layout.android'
 import { View, Image, StyleSheet } from 'react-native'
 import Constants from 'expo-constants'
 import { Dimensions } from 'react-native'
 
 
-export default function MapaAndroid() {
+export default function Mapa() {
     const { vuelo, setVuelo } = useContext(VueloContexto)
 
     const [track, setTrack] = useState([])
