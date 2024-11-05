@@ -16,10 +16,11 @@ export default function index() {
     }, [])
 
     async function recuperarVuelo() {
-        let data = vuelos !== undefined ? vuelos : null
+        let data = vuelos !== undefined ? vuelos : undefined
         if (vuelos === undefined || vuelos.time + 600 < Date.now() / 1000) {
             console.log('La información de vuelos está desactualizada')
             let vuelosJSON = await recuperarVuelos()
+
             data = vuelosJSON
             setVuelos(vuelosJSON)
         } else {

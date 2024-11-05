@@ -11,17 +11,23 @@ export async function recuperarVuelos() {
         TO DO: guardar la cabezera del limit rate para evitar un 429
         y/o detectar error 429
     */
+    try {
 
-    var url = root + `/states/all`
-    var data = await fetch(url)
-    var correctJson = await data.json()
-    if (correctJson.states === null) {
-        throw new Error(503)
+        var url = root + `/states/all`
+        var data = await fetch(url)
+        var correctJson = await data.json()
+        if (correctJson.states === null) {
+            throw new Error(503)
+        }
+        return correctJson
+    } catch (e) {
+        console.log('Error recuperando vuelo')
+        return undefined
     }
-    return correctJson
 }
 
 export function vueloAleatorio(vuelos) {
+    if (vuelos === undefined) { return undefined }
     console.log('Llamada a recuperar un vuelo aleatorio, vuelos: ', vuelos.length)
     if (vuelos.states === null) {
         throw new Error()
@@ -32,6 +38,7 @@ export function vueloAleatorio(vuelos) {
 }
 
 export async function recuperarPath(vuelo) {
+    if (vuelo === undefined) { return undefined }
     var url = root + `/tracks/all?icao24=${vuelo[0]}&time=0`
 
     var data = await fetch(url)

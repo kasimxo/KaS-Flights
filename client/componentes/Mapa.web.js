@@ -6,7 +6,7 @@ import { VueloContexto } from '../app/_layout.web';
 import { StyleSheet } from 'react-native';
 import L from 'leaflet'
 
-import marker from './../assets/favicon.png';
+import marker from './../assets/modo-avion.png';
 
 
 export default function Mapa() {
