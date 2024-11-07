@@ -21,6 +21,11 @@
         "backgroundColor": "#ffffff"
       },
       "permissions": [ "INTERNET" ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AlzaSyD7QK0ACRlSwwy6kTGByYiB-nxAazRDay0"
+        }
+      },
       "package": "com.kasimxo.kasflightclient"
     },
     "web": {

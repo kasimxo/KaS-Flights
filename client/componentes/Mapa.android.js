@@ -15,7 +15,6 @@ export default function Mapa() {
     useEffect(() => {
         if (vuelo === undefined) { return }
         let camino = []
-        console.log('Debug:', vuelo.path)
         vuelo.path.forEach((position) => {
 
             camino.push({ latitude: position[1], longitude: position[2] })
@@ -36,6 +35,7 @@ export default function Mapa() {
                     latitudeDelta: 0.0922,
                     longitudeDelta: 0.0421,
                 }}
+                provider='OpenStreetMap'
             >
                 <Marker
                     coordinate={vuelo !== undefined ? { latitude: vuelo.latitude, longitude: vuelo.longitude } : { latitude: 0, longitude: 0 }}
