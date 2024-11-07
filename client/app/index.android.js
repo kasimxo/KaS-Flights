@@ -54,7 +54,7 @@ export default function index() {
             category: vueloRand[17],
             path: vueloRand[18]
         })
-        console.log('Hemos seteado el vuelo: ', vueloRand)
+        console.log('Hemos seteado el vuelo. ')
     }
 
     return (
