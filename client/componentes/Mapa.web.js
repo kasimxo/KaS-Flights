@@ -6,7 +6,8 @@ import { VueloContexto } from '../app/_layout.web';
 import { StyleSheet } from 'react-native';
 import L from 'leaflet'
 
-import marker from './../assets/modo-avion.png';
+import { marker } from './../assets/modo-avion.png';
+
 
 
 export default function Mapa() {
@@ -19,8 +20,13 @@ export default function Mapa() {
         console.log('useEffect')
     }, [vuelo])
 
+    const obj = {
+        uri: './../assets/modo-avion.png',
+        img: require('./../assets/modo-avion.png')
+    }
+
     const myIcon = new L.Icon({
-        iconUrl: './../assets/modo-avion.png',
+        iconUrl: obj.uri,
         iconSize: [40, 40], // size of the icon
         iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
         popupAnchor: [0, -30] // point from which the popup should open relative to the iconAnchor
