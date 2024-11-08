@@ -10,17 +10,45 @@ export default function Mapa() {
     const { vuelo, setVuelo } = useContext(VueloContexto)
 
     const [track, setTrack] = useState([])
-    const [area, setArea] = useState()
+    const [lat, setLat] = useState(0)
+    const [long, setLong] = useState(0)
+    const [rotationDegrees, setRotationDegrees] = useState(0)
 
     useEffect(() => {
         if (vuelo === undefined) { return }
         let camino = []
         vuelo.path.forEach((position) => {
-
             camino.push({ latitude: position[1], longitude: position[2] })
         });
+
+        if (vuelo.time_position > vuelo.path[vuelo.path.length - 1][0]) {
+            camino.push({ latitude: vuelo.latitude, longitude: vuelo.longitude })
+            setLat(vuelo.latitude)
+            setLong(vuelo.longitude)
+        } else {
+            setLat(vuelo.path[vuelo.path.length - 1][1])
+            setLong(vuelo.path[vuelo.path.length - 1][2])
+        }
+
         setTrack(camino)
-        //{latitude: 37.8025259, longitude: -122.4351431},
+
+        // Calcular rotation degrees = angulo entre vuelo.path[penúltimo] y vuelo.path[último]
+        let secondToLast = vuelo.path[vuelo.path.length - 2]
+        let Last = vuelo.path[vuelo.path.length - 1]
+        let diffLat = secondToLast[1] - Last[1]
+        let diffLong = secondToLast[2] - Last[2]
+        let angle = Math.atan2(Math.abs(diffLat), Math.abs(diffLong)) * 180 / Math.PI
+        if (diffLat > 0 && diffLong > 0) {
+            setRotationDegrees(angle + 180)
+        } else if (diffLat < 0 && diffLong > 0) {
+            setRotationDegrees(angle + 270)
+        } else if (diffLat < 0 && diffLong < 0) {
+            setRotationDegrees(angle)
+        } else if (diffLat > 0 && diffLong < 0) {
+            setRotationDegrees(angle + 90)
+        }
+        console.log(angle, diffLat, diffLong)
+
     }, [vuelo])
 
     return (
@@ -30,27 +58,33 @@ export default function Mapa() {
             <MapView
                 style={{ flex: 1 }}
                 region={{
-                    latitude: vuelo !== undefined ? vuelo.latitude : 0,
-                    longitude: vuelo !== undefined ? vuelo.longitude : 0,
+                    latitude: lat,
+                    longitude: long,
                     latitudeDelta: 0.0922,
                     longitudeDelta: 0.0421,
                 }}
             >
                 <Marker
-                    coordinate={vuelo !== undefined ? { latitude: vuelo.latitude, longitude: vuelo.longitude } : { latitude: 0, longitude: 0 }}
+                    coordinate={{ latitude: lat, longitude: long }}
+                    anchor={{ x: 0.5, y: 0.5 }}
+                    icon={require('./../assets/marker.png')}
+                    rotation={rotationDegrees}
                 >
-                    <View>
+                    {/*
+
+                        <View>
                         <Image
                             source={require('./../assets/modo-avion.png')}
-                            style={{ width: 25, height: 25 }}
-                        />
+                            style={{ width: 26, height: 26, transform: [{ rotate: rotationDegrees + 'deg' }] }}
+                            />
                     </View>
+                        */}
                 </Marker>
                 <Polyline
                     coordinates={track}
                 />
             </MapView>
-        </View>
+        </View >
     )
 }
 
