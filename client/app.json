@@ -27,7 +27,7 @@
       ],
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyD7QK0ACRlSwwy6kTGByYiB-nxAazRDay0"
+          "apiKey": ""
         }
       },
       "package": "com.kasimxo.kasflightclient"
