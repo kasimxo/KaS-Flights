@@ -5,7 +5,7 @@ import * as leafletcss from 'leaflet/dist/leaflet.css'
 import { VueloContexto } from '../app/_layout.web';
 import { StyleSheet, Text } from 'react-native';
 import L from 'leaflet'
-import { marker } from './../assets/modo-avion.png';
+import { marker } from './../static/marker.png';
 
 
 
@@ -29,8 +29,8 @@ export default function Mapa() {
     }, [vuelo])
 
     const obj = {
-        uri: './../assets/marker.png',
-        img: require('./../assets/modo-avion.png')
+        uri: './../static/marker.png',
+        img: require('./../static/marker.png')
     }
 
     const myIcon = new L.Icon({
