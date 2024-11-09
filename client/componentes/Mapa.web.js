@@ -5,14 +5,12 @@ import * as leafletcss from 'leaflet/dist/leaflet.css'
 import { VueloContexto } from '../app/_layout.web';
 import { StyleSheet, Text } from 'react-native';
 import L from 'leaflet'
-import customCSSKAS from './../assets/customCSSKAS'
 import { marker } from './../assets/modo-avion.png';
 
 
 
 export default function Mapa() {
     const { vuelo, setVuelo } = useContext(VueloContexto)
-    const cssKas = require('./../assets/customCSSKAS')
     const [lat, setLat] = useState(0)
     const [long, setLong] = useState(0)
     const [track, setTrack] = useState([])
