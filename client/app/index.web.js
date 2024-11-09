@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#9c72ab',
+        backgroundColor: '#d1d1d1',
         borderRadius: 50
     },
     boton: {
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#cfa4de',
+        backgroundColor: '#ebebeb',
         borderRadius: 50
     }
 })

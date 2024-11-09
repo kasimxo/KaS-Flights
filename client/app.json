@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "kas-flight-client",
-    "scheme": "kas-flight-client",
-    "slug": "kas-flight-client",
+    "name": "kas-flight",
+    "scheme": "kas-flight",
+    "slug": "kas-flight",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -30,7 +30,7 @@
           "apiKey": ""
         }
       },
-      "package": "com.kasimxo.kasflightclient"
+      "package": "com.kasimxo.kasflight"
     },
     "web": {
       "favicon": "./assets/favicon.png",
