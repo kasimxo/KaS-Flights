@@ -1,6 +1,6 @@
 
 import { useEffect, useState, useContext, Image } from 'react';
-import { MapContainer, Marker, Popup, TileLayer, Polyline, useMap } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, Polyline, useMap, Tooltip } from 'react-leaflet'
 import * as leafletcss from 'leaflet/dist/leaflet.css'
 import { VueloContexto } from '../app/_layout.web';
 import { StyleSheet, Text } from 'react-native';
@@ -17,10 +17,11 @@ export default function Mapa() {
     useEffect(() => {
         console.log('useEffect')
         if (vuelo !== undefined && vuelo.time_position < vuelo.path[vuelo.path.length - 1][0]) {
+            console.log('Caso A')
             setLat(vuelo.path[vuelo.path.length - 1][1])
             setLong(vuelo.path[vuelo.path.length - 1][2])
-            console.log('Caso especial')
         } else if (vuelo !== undefined) {
+            console.log('caso B')
             setLat(vuelo.latitude)
             setLong(vuelo.longitude)
         }
@@ -47,20 +48,25 @@ export default function Mapa() {
                 position={[lat, long]}
                 icon={myIcon}
             >
-                <Popup
-                    className='purplebackground-kas'
-                >
-                    Identificador: {vuelo !== undefined ? vuelo.id : ''}<br />
-                    {/*País de origen: {vuelo !== undefined ? vuelo.origen : ''}<br />*/}
-                    Latitud: {vuelo !== undefined ? vuelo.latitude : ''}<br />
-                    Longitud: {vuelo !== undefined ? vuelo.longitude : ''}<br />
-                    Altitud: {vuelo !== undefined ? vuelo.baro_altitude : ''}<br />
-                </Popup>
+                {
+                    vuelo !== undefined && lat !== 0 && long !== 0 ?
+                        <Tooltip
+                            permanent={true}
+                            offset={[30, -25]}
+                            interactive={false}
+                            content={`
+                                Identificador: ${vuelo.id}<br/>
+                                Latitud: ${lat}<br/>
+                                Longitud: ${long}<br/>
+                                Altitud: ${vuelo.baro_altitude}
+                            `}
+                        >
+                        </Tooltip>
+                        : ''
+                }
             </Marker>
-
         </MapContainer >
     )
-
 }
 
 const estiloMapa = StyleSheet.create({
@@ -88,7 +94,6 @@ function MoverMapa() {
         let camino = []
         console.log('Debug:', path)
         path.forEach((position) => {
-
             camino.push([position[1], position[2]])
         });
 

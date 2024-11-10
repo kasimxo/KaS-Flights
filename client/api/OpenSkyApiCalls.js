@@ -34,15 +34,25 @@ export function vueloAleatorio(vuelos) {
     }
     var max = vuelos.states.length
     var randomIndex = Math.floor(Math.random() * max)
+    while (vuelos.states[randomIndex][5] === null || vuelos.states[randomIndex][6] === null) {
+        randomIndex = Math.floor(Math.random() * max)
+        console.log('Lat/Long null, choosing new random')
+    }
     return vuelos.states[randomIndex]
 }
 
 export async function recuperarPath(vuelo) {
-    if (vuelo === undefined) { return undefined }
-    var url = root + `/tracks/all?icao24=${vuelo[0]}&time=0`
+    try {
 
-    var data = await fetch(url)
-    var correctJson = await data.json()
-    vuelo[vuelo.length + 1] = correctJson.path
-    return vuelo
+        if (vuelo === undefined) { return undefined }
+        var url = root + `/tracks/all?icao24=${vuelo[0]}&time=0`
+
+        var data = await fetch(url)
+        var correctJson = await data.json()
+        vuelo[vuelo.length + 1] = correctJson.path
+        return vuelo
+    } catch (e) {
+        console.log('error parsing')
+        return undefined
+    }
 }

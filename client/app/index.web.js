@@ -87,18 +87,19 @@ const styles = StyleSheet.create({
     },
     botonHover: {
         zIndex: 999,
-        position: 'absolute',
         shadowColor: 'black',
         shadowOpacity: 0.5,
         shadowOffset: { width: 0, height: 0 },
         shadowRadius: 10,
-        bottom: 100,
         padding: 25,
+        backgroundColor: '#d1d1d1',
+        borderRadius: 50,
+
+        position: 'absolute',
+        bottom: 50,
         alignContent: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#d1d1d1',
-        borderRadius: 50
     },
     boton: {
         zIndex: 999,
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.5,
         shadowOffset: { width: 0, height: 0 },
         shadowRadius: 10,
-        bottom: 100,
+        bottom: 50,
         padding: 25,
         alignContent: 'center',
         justifyContent: 'center',
