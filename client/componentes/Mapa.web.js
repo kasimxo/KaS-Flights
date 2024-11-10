@@ -5,7 +5,6 @@ import * as leafletcss from 'leaflet/dist/leaflet.css'
 import { VueloContexto } from '../app/_layout.web';
 import { StyleSheet, Text } from 'react-native';
 import L from 'leaflet'
-import { marker } from './../static/marker.png';
 
 
 
@@ -13,7 +12,6 @@ export default function Mapa() {
     const { vuelo, setVuelo } = useContext(VueloContexto)
     const [lat, setLat] = useState(0)
     const [long, setLong] = useState(0)
-    const [track, setTrack] = useState([])
 
 
     useEffect(() => {
@@ -29,15 +27,14 @@ export default function Mapa() {
     }, [vuelo])
 
     const obj = {
-        uri: './../static/marker.png',
-        img: require('./../static/marker.png')
+        uri: 'https://cdn-icons-png.flaticon.com/256/7893/7893979.png',
     }
 
     const myIcon = new L.Icon({
         iconUrl: obj.uri,
         iconSize: [50, 50], // size of the icon
         iconAnchor: [25, 50], // point of the icon which will correspond to marker's location
-        popupAnchor: [0, -30], // point from which the popup should open relative to the iconAnchor
+        popupAnchor: [0, -50], // point from which the popup should open relative to the iconAnchor
     })
     return (
         <MapContainer style={estiloMapa.mapa} center={[0, 0]} zoom={10}>
