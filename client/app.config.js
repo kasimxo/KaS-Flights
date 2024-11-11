@@ -9,5 +9,8 @@ export default {
                 apiKey: apiKey,
             }
         }
+    },
+    eas: {
+        projectId: "f012c748-f3be-4d1c-872c-edcd68cdfe90"
     }
 }
