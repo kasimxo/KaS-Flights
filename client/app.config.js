@@ -10,6 +10,8 @@ export default {
             }
         }
     },
+    name: "kas-flight",
+    slug: "kas-flight-client",
     extra: {
         eas: {
             projectId: "f012c748-f3be-4d1c-872c-edcd68cdfe90"
