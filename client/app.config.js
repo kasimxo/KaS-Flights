@@ -9,7 +9,8 @@ export default {
                 googleMaps: {
                     apiKey: apiKey,
                 }
-            }
+            },
+            package: "com.kasimxo.kasflight"
         },
         name: "kas-flight",
         slug: "kas-flight-client",
