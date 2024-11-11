@@ -21,7 +21,7 @@ export default function Mapa() {
             camino.push({ latitude: position[1], longitude: position[2] })
         });
 
-        if (vuelo.time_position > vuelo.path[vuelo.path.length - 1][0]) {
+        if (vuelo.time_position > vuelo.path[vuelo.path.length - 1][0] && connectAuthEmulator.time_position - vuelo.path[vuelo.path.length - 1][0] > 5000) {
             camino.push({ latitude: vuelo.latitude, longitude: vuelo.longitude })
             setLat(vuelo.latitude)
             setLong(vuelo.longitude)
@@ -43,7 +43,7 @@ export default function Mapa() {
         } else if (diffLat < 0 && diffLong > 0) {
             setRotationDegrees(angle + 270)
         } else if (diffLat < 0 && diffLong < 0) {
-            setRotationDegrees(angle)
+            setRotationDegrees(90 - angle)
         } else if (diffLat > 0 && diffLong < 0) {
             setRotationDegrees(angle + 90)
         }
