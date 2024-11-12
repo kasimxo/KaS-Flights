@@ -39,7 +39,7 @@ export default function Mapa() {
         let diffLong = secondToLast[2] - Last[2]
         let angle = Math.atan2(Math.abs(diffLat), Math.abs(diffLong)) * 180 / Math.PI
         if (diffLat > 0 && diffLong > 0) {
-            setRotationDegrees(angle + 180)
+            setRotationDegrees(90 - angle + 180)
         } else if (diffLat < 0 && diffLong > 0) {
             setRotationDegrees(angle + 270)
         } else if (diffLat < 0 && diffLong < 0) {
