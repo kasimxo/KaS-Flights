@@ -6,7 +6,12 @@ KaS-Flights permite la visualización de un vuelo real (utilizando la API de Ope
 - Acceso a datos: Con llamadas a la API de OpenSky Network se recuperan datos actuales y reales. A través de un sistema de guardado local y una comprobación de la fecha y hora de este guardado local se evita un exceso innecesario de llamas a la API.
 - Solución de errores: La aplicación está preparada ante los posibles errores, como que la API no esté disponible o haya algún error en los datos recibidos.
 
-![versionweb](https://github.com/user-attachments/assets/23060367-9bbf-4a5c-84af-1eff84ab3c2e)
+|Versión web|Versión Android|
+:------------:|:------------:
+![versionweb](https://github.com/user-attachments/assets/23060367-9bbf-4a5c-84af-1eff84ab3c2e) | ![androidmockupversion](https://github.com/user-attachments/assets/eed8f822-6a32-4be6-a303-511f393e6536)
+[Prueba la versión web](https://ka-s-flights.vercel.app/) | [Descarga la apk para Android](https://github.com/kasimxo/KaS-Flights/releases/download/v1.0.0/application-fa3b4cf9-8f1d-49c9-83b5-d9418f65b3ca.apk)
+
+
 
 ### Tecnologías y dependencias
 
