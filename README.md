@@ -8,7 +8,7 @@ KaS-Flights permite la visualización de un vuelo real (utilizando la API de Ope
 
 |Versión web|Versión Android|
 :------------:|:------------:
-![versionweb](https://github.com/user-attachments/assets/23060367-9bbf-4a5c-84af-1eff84ab3c2e) | ![androidmockupnoshadow](https://github.com/user-attachments/assets/22946914-6362-4497-bdf7-acb043676981)
+<img width="524" alt="Mockup Web" src="https://github.com/user-attachments/assets/93f19e1e-ee78-42f9-b28a-438b399180c9">| <img height="420" alt="Mockup Android" src="https://github.com/user-attachments/assets/22946914-6362-4497-bdf7-acb043676981">
 [Prueba la versión web](https://ka-s-flights.vercel.app/) | [Descarga la apk para Android](https://github.com/kasimxo/KaS-Flights/releases/download/v1.0.0/application-fa3b4cf9-8f1d-49c9-83b5-d9418f65b3ca.apk)
 
 
