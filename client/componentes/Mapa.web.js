@@ -94,7 +94,9 @@ function MoverMapa() {
         let camino = []
         console.log('Debug:', path)
         path.forEach((position) => {
-            camino.push([position[1], position[2]])
+            if (position[1] !== null && position[2] !== null) {
+                camino.push([position[1], position[2]])
+            }
         });
 
         if (vuelo.time_position > vuelo.path[vuelo.path.length - 1][0]) {
